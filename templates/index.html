@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quy đổi điểm HSA 2025</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>HỆ THỐNG QUY ĐỔI ĐIỂM HSA 2025</h1>
+
+        <form method="post" action="/">
+            <div class="input-group">
+                <label for="hsa_score">Nhập điểm HSA của bạn:</label>
+                <input type="text" id="hsa_score" name="hsa_score"
+                       placeholder="Ví dụ: 95.5"
+                       value="{{ hsa_score if hsa_score is not none else '' }}"
+                       required>
+            </div>
+            <button type="submit" class="convert-button">Chuyển đổi</button>
+        </form>
+
+        {% if error %}
+            <p class="error-message">{{ error }}</p>
+        {% endif %}
+
+        {% if results %}
+            <div class="results-section">
+                <h2>Kết quả quy đổi:</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tổ hợp</th>
+                            <th>Điểm chuyển đổi (dự kiến)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in results %}
+                        <tr>
+                            <td>{{ item.combination }}</td>
+                            <td>{{ item.score }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <p class="disclaimer">Lưu ý: Điểm quy đổi chỉ mang tính tham khảo dựa trên mô hình dự đoán.</p>
+            </div>
+        {% endif %}
+
+    </div>
+</body>
+</html>
