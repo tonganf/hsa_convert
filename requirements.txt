@@ -3,4 +3,3 @@ pandas
 flask
 numpy 
 seaborn
-pickle
