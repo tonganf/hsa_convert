@@ -134,4 +134,4 @@ def index():
                            hsa_score=input_hsa_score_str)
 
 if __name__ == '__main__':
-    app.run(debug=True)  # Tắt debug=True khi triển khai thực tế
+    app.run(host='0.0.0.0', port=10000,debug=True)  # Tắt debug=True khi triển khai thực tế
